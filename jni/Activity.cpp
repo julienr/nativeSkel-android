@@ -56,6 +56,7 @@ bool Activity::_initGL () {
   eglQuerySurface(display, surface, EGL_WIDTH, &width);
   eglQuerySurface(display, surface, EGL_HEIGHT, &height);
 
+  glViewport(0,0, width, height);
 
   postInit();
 

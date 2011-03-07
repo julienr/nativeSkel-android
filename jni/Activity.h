@@ -26,6 +26,9 @@ class Activity {
     void handleCmd (int32_t cmd);
 
     android_app* getApp () const { return app; }
+
+    int getWidth () const { return width; }
+    int getHeight() const { return height; }
   protected:
     //called on every frame to draw the world. 
     virtual void drawImpl () = 0;
