@@ -1,7 +1,16 @@
 #ifndef DEMO_ACTIVITY_H
 #define DEMO_ACTIVITY_H
 
-#include <nativedef.h>
+#include <jni.h>
+#include <errno.h>
+
+#include <EGL/egl.h>
+#include <GLES/gl.h>
+
+#include <android/log.h>
+
+#include <android_native_app_glue.h>
+
 
 //A native activity helper class
 class Activity {
