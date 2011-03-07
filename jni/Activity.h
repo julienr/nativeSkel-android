@@ -24,6 +24,8 @@ class Activity {
 
     bool handleInput (AInputEvent* event);
     void handleCmd (int32_t cmd);
+
+    android_app* getApp () const { return app; }
   protected:
     //called on every frame to draw the world. 
     virtual void drawImpl () = 0;

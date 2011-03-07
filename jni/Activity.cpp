@@ -56,13 +56,9 @@ bool Activity::_initGL () {
   eglQuerySurface(display, surface, EGL_WIDTH, &width);
   eglQuerySurface(display, surface, EGL_HEIGHT, &height);
 
-  // Initialize GL state.
-  glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_FASTEST);
-  glEnable(GL_CULL_FACE);
-  glShadeModel(GL_SMOOTH);
-  glDisable(GL_DEPTH_TEST);
 
-  glClearColor(1,0,0,1);
+  postInit();
+
   return true;
 }
 
