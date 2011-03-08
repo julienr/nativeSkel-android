@@ -77,6 +77,12 @@ void Activity::_deinitGL () {
   context = EGL_NO_CONTEXT;
 }
 
+uint64_t Activity::_getTimeMillis () {
+    timeval tv;
+    gettimeofday(&tv, NULL);
+    return tv.tv_sec*1000 + tv.tv_usec/1000;
+}
+
 void Activity::_draw () {
   if (display == EGL_NO_DISPLAY)
     return;
@@ -128,6 +134,8 @@ void Activity::run () {
     app->savedStateSize = 0;
   }
 
+  lastSimulate = _getTimeMillis();
+
   while (1) {
     int ident;
     int events;
@@ -142,6 +150,12 @@ void Activity::run () {
         return;
       }
     }
+
+    //Simulate
+    const uint64_t now = _getTimeMillis();
+    const double elapsedS = (now-lastSimulate)/1000.0;
+    simulate(elapsedS);
+    lastSimulate = now;
 
     //Draw
     _draw();

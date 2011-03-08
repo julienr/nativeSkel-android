@@ -33,6 +33,10 @@ class Activity {
     //called on every frame to draw the world. 
     virtual void drawImpl () = 0;
 
+    //called on every frame to simulate the world's events
+    //elapsedS is the number of elapsed seconds since last frame
+    virtual void simulate (double elapsedS) = 0;
+
     //called after GL initialization, allows the activity
     //to perform resources loading
     virtual void postInit () {}
@@ -52,6 +56,8 @@ class Activity {
 
     void _draw ();
 
+    uint64_t _getTimeMillis ();
+
     android_app* app;
 
     EGLDisplay display;
@@ -59,6 +65,8 @@ class Activity {
     EGLContext context;
     int32_t width;
     int32_t height;
+
+    uint64_t lastSimulate;
 };
 
 

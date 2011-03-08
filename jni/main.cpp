@@ -30,6 +30,9 @@ class SampleActivity : public Activity {
       glColor4f(1,0,0,1);
       glDrawArrays(GL_TRIANGLES, 0, 3);
     }
+
+    void simulate (double elapsedS) {
+    }
 };
 
 void android_main (android_app* app) {
